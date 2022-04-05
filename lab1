@@ -1,0 +1,80 @@
+CREATING DB AND COLLECTION :
+> show databases
+admin     0.000GB
+config    0.000GB
+employee  0.000GB
+lab       0.000GB
+local     0.000GB
+ullaas    0.000GB
+> use manvesh
+switched to db manvesh
+> db.mycollection.insert({"name": "sandhu"})
+WriteResult({ "nInserted" : 1 })
+> show databases
+admin     0.000GB
+config    0.000GB
+employee  0.000GB
+lab       0.000GB
+local     0.000GB
+manvesh   0.000GB
+
+INSERTING DATA:
+db.myCollection.insertMany([
+...   {
+...     "name": "navindu", 
+...     "age": 22
+...   },
+...   {
+...     "name": "kavindu", 
+...     "age": 20
+...   },
+... 
+...   {
+...     "name": "john doe", 
+...     "age": 25,
+...     "location": "colombo"
+...   }
+... ])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("624bbb5182655d8432ca4bcc"),
+		ObjectId("624bbb5182655d8432ca4bcd"),
+		ObjectId("624bbb5182655d8432ca4bce")
+	]
+}
+
+FINDING IN COLLECTION:
+ db.mycollection.find({"name": "sandhu"})
+{ "_id" : ObjectId("624bbb0a82655d8432ca4bcb"), "name" : "sandhu" }
+> db.myNEWcollection.drop()
+true
+
+DROPPING COLLECTION:
+> db.myNEWcollection.drop()
+true
+
+UPDATE:
+> db.collection.update({age : 20}, {$set: {age: 23 }})
+\WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+DISPLAY:
+ db.collection.find()
+{ "_id" : ObjectId("624bc25edf918a470c38028f"), "name" : "navindu", "age" : 22 }
+{ "_id" : ObjectId("624bc25edf918a470c380290"), "name" : "kavindu", "age" : 23 }
+{ "_id" : ObjectId("624bc25edf918a470c380291"), "name" : "john doe", "age" : 25, "location" : "colombo" }
+> 
+
+ db.collection.find()
+{ "_id" : ObjectId("624bc25edf918a470c38028f"), "name" : "navindu", "age" : 22 }
+{ "_id" : ObjectId("624bc25edf918a470c380290"), "name" : "kavindu", "age" : 23 }
+{ "_id" : ObjectId("624bc25edf918a470c380291"), "name" : "john doe", "age" : 25, "location" : "colombo" }
+> 
+
+ db.collection.find()
+{ "_id" : ObjectId("624bc25edf918a470c38028f"), "name" : "navindu", "age" : 22 }
+{ "_id" : ObjectId("624bc25edf918a470c380290"), "name" : "kavindu", "age" : 23 }
+{ "_id" : ObjectId("624bc25edf918a470c380291"), "name" : "john doe", "age" : 25, "location" : "colombo" }
+> 
+
+
