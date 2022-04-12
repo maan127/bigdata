@@ -1,0 +1,20 @@
+DELETING ENTRY
+
+BEFORE DELETION:
+ db.myCollection.find()
+{ "_id" : ObjectId("624bbb5182655d8432ca4bcc"), "name" : "navindu", "age" : 22 }
+{ "_id" : ObjectId("624bbb5182655d8432ca4bcd"), "name" : "kavindu", "age" : 23 }
+{ "_id" : ObjectId("624bbb5182655d8432ca4bce"), "name" : "john doe", "age" : 25, "location" : "colombo" }
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd1"), "name" : "navindu", "age" : 22 }
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd2"), "name" : "kavindu", "age" : 20 }
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd3"), "name" : "john doe", "age" : 25, "location" : "colombo" }
+DELETING:
+db.myCollection.remove({"name":"john doe"})
+WriteResult({ "nRemoved" : 2 })
+AFTER DELETION:
+db.myCollection.find()
+{ "_id" : ObjectId("624bbb5182655d8432ca4bcc"), "name" : "navindu", "age" : 22 }
+{ "_id" : ObjectId("624bbb5182655d8432ca4bcd"), "name" : "kavindu", "age" : 23 }
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd1"), "name" : "navindu", "age" : 22 }
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd2"), "name" : "kavindu", "age" : 20 }
+
