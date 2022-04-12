@@ -18,3 +18,27 @@ db.myCollection.find()
 { "_id" : ObjectId("624bbfbd82655d8432ca4bd1"), "name" : "navindu", "age" : 22 }
 { "_id" : ObjectId("624bbfbd82655d8432ca4bd2"), "name" : "kavindu", "age" : 20 }
 
+UPDATE USING UNSET:
+db.myCollection.update(
+... {"name":"navindu"},
+... {
+... $unset: {"age":""}
+... }
+... )
+
+CHANGE after update:
+ db.myCollection.find()
+{ "_id" : ObjectId("624bbb5182655d8432ca4bcc"), "name" : "navindu" }
+{ "_id" : ObjectId("624bbb5182655d8432ca4bcd"), "name" : "kavindu", "age" : 23 }
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd1"), "name" : "navindu", "age" : 22 }
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd2"), "name" : "kavindu", "age" : 20 }
+
+AND OPERATION:
+ db.myCollection.find({$and:[{"name":"navindu","age":22}]})
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd1"), "name" : "navindu", "age" : 22 }
+
+
+OR OPERATION:
+> db.myCollection.find({$or:[{"name":"kavindu","age":20}]})
+{ "_id" : ObjectId("624bbfbd82655d8432ca4bd2"), "name" : "kavindu", "age" : 20 }
+
